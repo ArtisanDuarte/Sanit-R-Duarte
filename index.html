@@ -1,57 +1,465 @@
+# index.html
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanit'R Duarte</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanit'R Duarte | Plomberie & Chauffage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0b4ea2;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: white;
+      color: #0b4ea2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(11,78,162,0.85), rgba(11,78,162,0.9)), url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop') center/cover;
+      color: white;
+      padding: 120px 20px;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 55px;
+      line-height: 1.2;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      color: #dbeafe;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #0b4ea2;
+    }
+
+    .btn-secondary {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      color: #0b4ea2;
+      margin-bottom: 10px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      background: #0b4ea2;
+      color: white;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #0b4ea2;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .about ul {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 25px;
+      transition: 0.4s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .stars {
+      color: #facc15;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .contact {
+      background: #0b4ea2;
+      color: white;
+      text-align: center;
+      border-radius: 40px;
+      padding: 70px 30px;
+    }
+
+    .contact h2 {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font-weight: bold;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Sanit'R Duarte</h1>
-  <p>Plomberie • Chauffage • Salle de bain • Dépannage</p>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <div class="logo-circle">SD</div>
+        <div>
+          <h1>Sanit'R Duarte</h1>
+          <small>Plomberie & Chauffage</small>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#gallery">Réalisations</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-  <h2>Votre artisan plombier de confiance</h2>
-  <p>Intervention rapide à Paris et en Île-de-France.</p>
+  <div class="container hero-content">
+    <h2>Votre artisan plombier de confiance à Paris et en Île-de-France</h2>
+    <p>Spécialiste en plomberie, chauffage, salle de bain et dépannage rapide avec des finitions professionnelles.</p>
 
-  <div class="buttons">
-    <a href="tel:0759184634">📞 Appeler</a>
-    <a href="mailto:sanitrduarte@gmail.com">✉️ Email</a>
+    <div class="buttons">
+      <a class="btn btn-primary" href="tel:0759184634">📞 Appeler maintenant</a>
+      <a class="btn btn-secondary" href="https://wa.me/33759184634" target="_blank">WhatsApp</a>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Nos Services</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>🔧 Plomberie</h3>
-      <p>Installation et dépannage rapide.</p>
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nos Services</h2>
+      <p>Des prestations professionnelles adaptées à vos besoins.</p>
     </div>
 
-    <div class="card">
-      <h3>🔥 Chauffage</h3>
-      <p>Installation et entretien chauffage.</p>
+    <div class="services-grid">
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>Plomberie</h3>
+        <p>Installation, réparation et dépannage rapide pour tous vos travaux de plomberie.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛁</div>
+        <h3>Salle de Bain</h3>
+        <p>Création et rénovation de salles de bain modernes et élégantes.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Chauffage</h3>
+        <p>Installation et entretien de systèmes de chauffage performants.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚨</div>
+        <h3>Dépannage Urgent</h3>
+        <p>Intervention rapide pour les urgences plomberie et fuites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+    <div>
+      <h2 style="font-size:42px;color:#0b4ea2;margin-bottom:20px;">Pourquoi choisir Sanit'R Duarte ?</h2>
+
+      <p>Nous proposons un travail sérieux, rapide et de qualité pour les particuliers et les professionnels.</p>
+
+      <ul>
+        <li>✔ Intervention rapide</li>
+        <li>✔ Devis gratuit</li>
+        <li>✔ Travail professionnel</li>
+        <li>✔ Conseils personnalisés</li>
+        <li>✔ Finitions propres et modernes</li>
+      </ul>
     </div>
 
-    <div class="card">
-      <h3>🛁 Salle de bain</h3>
-      <p>Création et rénovation complète.</p>
+    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=1200&auto=format&fit=crop" alt="Plomberie">
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nos Réalisations</h2>
+      <p>Découvrez quelques-uns de nos projets.</p>
     </div>
 
-    <div class="card">
-      <h3>🚨 Urgence</h3>
-      <p>Intervention rapide 7j/7.</p>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop" alt="Salle de bain">
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="Cuisine moderne">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop" alt="Travaux plomberie">
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div class="container">
+    <div class="section-title">
+      <h2>Avis Clients</h2>
+      <p>La satisfaction de nos clients est notre priorité.</p>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Travail très professionnel et rapide. Je recommande fortement.</p>
+        <strong>- Sophie M.</strong>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Intervention rapide pour une fuite d'eau. Artisan très sérieux.</p>
+        <strong>- Karim L.</strong>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Excellent travail de rénovation avec des finitions impeccables.</p>
+        <strong>- Julie R.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact">
+      <h2>Besoin d'un plombier professionnel ?</h2>
+      <p style="margin-bottom:30px;">Contactez-nous dès maintenant pour un devis gratuit.</p>
+
+      <div class="buttons" style="justify-content:center;">
+        <a class="btn btn-primary" href="tel:0759184634">📞 07 59 18 46 34</a>
+        <a class="btn btn-secondary" href="mailto:sanitrduarte@gmail.com">✉️ Envoyer un email</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Sanit'R Duarte</p>
+  <h3>Sanit'R Duarte</h3>
+  <p>Plomberie • Chauffage • Salle de bain • Dépannage</p>
+  <p style="margin-top:15px;color:#999;">© 2025 Sanit'R Duarte - Tous droits réservés.</p>
 </footer>
+
+<a class="whatsapp" href="https://wa.me/33759184634" target="_blank">WhatsApp</a>
 
 </body>
 </html>
+```
+
+# Instructions
+
+1. Ouvre ton fichier actuel `index.html`
+2. Supprime tout
+3. Colle le nouveau code ci-dessus
+4. Clique sur `Commit changes` sur GitHub
+5. Retourne sur Vercel → le site se mettra à jour automatiquement
